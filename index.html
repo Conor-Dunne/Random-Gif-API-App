@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIPHY API</title>
+</head>
+<style>
+    #new {
+        display: block;
+        font-size: 50px;
+    }
+
+    img {
+        width: 600px;
+        height: 600px;
+    }
+</style>
+<body>
+    <img src="#" alt="#">
+    <button id="new">Click me!</button>
+    <script>
+        const img = document.querySelector('img');
+        fetch('https://api.giphy.com/v1/gifs/translate?api_key=8Vg2uIjtsIEvIiEvOOqftZWNxOvKUYeK&s=coding', {mode: 'cors'})
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(response){
+                img.src = response.data.images.original.url;
+            });
+
+            const btn = document.querySelector("#new");
+
+            const category = 'random';
+
+            btn.addEventListener('click', () => fetch('https://api.giphy.com/v1/gifs/translate?api_key=8Vg2uIjtsIEvIiEvOOqftZWNxOvKUYeK&s=' + category, {mode: 'cors'})
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(response){
+                img.src = response.data.images.original.url;
+            }) )
+    </script>
+</body>
+</html>
+
+
